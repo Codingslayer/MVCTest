@@ -1,0 +1,30 @@
+﻿@model MVCTest.Models.CiudadModel.Ciudadvm
+
+@{
+    ViewBag.Title = "Nueva ciudad";
+}
+
+<div class="jumbotron align-content-center">
+    <h1 class="text-center">@ViewBag.Title</h1>
+</div>
+
+@using (Html.BeginForm("Nuevaciudad", "Ciudad", FormMethod.Post))
+{
+    <div class="row">
+
+        <div class="col-md-12">
+            @Html.LabelFor(d => d.Nombre)
+            @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div style="text-align:left;">
+        <input value="Guardar" class="btn btn-success" type="submit" />
+    </div>
+
+
+}
+

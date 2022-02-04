@@ -1,0 +1,30 @@
+﻿@model MVCTest.Models.CiudadModel.Ciudadvm
+
+@{
+    ViewBag.Title = "Editar datos";
+}
+
+<div class="jumbotron align-content-center">
+    <h1 class="text-center">@ViewBag.Title</h1>
+</div>
+
+@using (Html.BeginForm("Editarciudad", "Ciudad", FormMethod.Post))
+{
+    <div class="row">
+
+        <div class="col-md-12">
+            @Html.LabelFor(d => d.Nombre)
+            @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "red" })
+            <br />
+            <br />
+
+            <div style="text-align:left;">
+                <input value="Actualizar" class="btn btn-warning" type="submit" />
+            </div>
+        </div>
+
+    </div>
+
+}
+

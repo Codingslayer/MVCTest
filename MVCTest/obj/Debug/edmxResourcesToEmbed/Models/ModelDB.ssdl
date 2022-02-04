@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PruebaMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tblciudad">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tblpersona">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="IdCiudad" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="nchar" MaxLength="20" />
+    <Property Name="Edad" Type="nchar" MaxLength="4" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Tblciudad_Tblciudad">
+    <End Role="Tblciudad" Type="Self.Tblciudad" Multiplicity="1" />
+    <End Role="Tblciudad1" Type="Self.Tblciudad" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tblciudad">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tblciudad1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tblpersona_Tblciudad">
+    <End Role="Tblciudad" Type="Self.Tblciudad" Multiplicity="1" />
+    <End Role="Tblpersona" Type="Self.Tblpersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tblciudad">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tblpersona">
+        <PropertyRef Name="IdCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PruebaMVCModelStoreContainer">
+    <EntitySet Name="Tblciudad" EntityType="Self.Tblciudad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tblpersona" EntityType="Self.Tblpersona" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Tblciudad_Tblciudad" Association="Self.FK_Tblciudad_Tblciudad">
+      <End Role="Tblciudad" EntitySet="Tblciudad" />
+      <End Role="Tblciudad1" EntitySet="Tblciudad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tblpersona_Tblciudad" Association="Self.FK_Tblpersona_Tblciudad">
+      <End Role="Tblciudad" EntitySet="Tblciudad" />
+      <End Role="Tblpersona" EntitySet="Tblpersona" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

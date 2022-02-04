@@ -1,0 +1,55 @@
+﻿@model MVCTest.Models.PersonaModel.Personavm
+
+
+@{
+    ViewBag.Title = "Nueva persona";
+}
+
+<div class="jumbotron align-content-center">
+    <h1 class="text-center">@ViewBag.Title</h1>
+</div>
+
+
+@using (Html.BeginForm("Nuevapersona", "Persona", FormMethod.Post))
+{
+    <div class="row">
+
+        <div class="col-md-12">
+            @Html.LabelFor(d => d.Nombre)
+            @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "text-danger" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Apellido)
+            @Html.TextBoxFor(d => d.Apellido, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Apellido, null, new { @class = "text-danger" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Ciudades.Nombre)
+            @Html.DropDownListFor(d => d.Ciudades.ID, Model.Listciudad, new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Listciudad, null, new { @class = "text-danger" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Telefono)
+            @Html.TextBoxFor(d => d.Telefono, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Telefono, null, new { @class = "text-danger" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Edad)
+            @Html.TextBoxFor(d => d.Edad, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Edad, null, new { @class = "text-danger" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Activo)
+            @Html.CheckBoxFor(d => d.Activo, new { @class = "form-control", @checked = "checked" })
+
+            <br />
+
+            <div style="text-align:left;">
+                <input value="Guardar" class="btn btn-success" type="submit" />
+            </div>
+        </div>
+
+    </div>
+}
+

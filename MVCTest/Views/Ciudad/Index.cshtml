@@ -1,0 +1,32 @@
+﻿@model List<MVCTest.Models.CiudadModel.Ciudadvm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de ciudades</h2>
+
+<div class="row" style="text-align:left;padding:5px">
+    <a href="~/Ciudad/Nuevaciudad" class="btn btn-primary">Nuevo</a>
+</div>
+<div></div>
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+        @foreach (var campos in Model)
+        {
+            <tr>
+                <td>@campos.ID</td>
+                <td>@campos.Nombre</td>
+                <td>
+                    <a href="~/Ciudad/Editarciudad/@campos.ID" class="btn btn-default">Editar</a>
+                    <a href="~/Ciudad/Eliminarciudad/@campos.ID" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

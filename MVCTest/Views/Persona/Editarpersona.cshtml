@@ -1,0 +1,47 @@
+﻿@model MVCTest.Models.PersonaModel.Personavm
+
+@{
+    ViewBag.Title = "Editar datos";
+}
+
+<div class="jumbotron align-content-center">
+    <h1 class="text-center">@ViewBag.Title</h1>
+</div>
+
+@using (Html.BeginForm("Editarpersona", "Persona", FormMethod.Post))
+{
+    <div class="row">
+
+        <div class="col-md-12">
+            @Html.LabelFor(d => d.Nombre)
+            @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "red" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Apellido)
+            @Html.TextBoxFor(d => d.Apellido, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Apellido, null, new { @class = "red" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Telefono)
+            @Html.TextBoxFor(d => d.Telefono, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Telefono, null, new { @class = "red" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Edad)
+            @Html.TextBoxFor(d => d.Edad, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Edad, null, new { @class = "red" })
+            <br />
+            <br />
+            @Html.LabelFor(d => d.Activo)
+            @Html.CheckBoxFor(d => d.Activo, new { @class = "form-control", @checked = "checked" })
+            <br />
+
+            <div style="text-align:left;">
+                <input value="Actualizar" class="btn btn-warning" type="submit" />
+            </div>
+        </div>
+
+    </div>
+
+}
