@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TestMVC.Models.Tblpersona>
+
+@{
+    ViewBag.Title = "Listado de personas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row" style="text-align:left;padding:5px">
+    <a href="~/Persona/Nuevapersona" class="btn btn-primary">Nuevo</a>
+</div>
+<div></div>
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Edad</th>
+            <th>Activo</th>
+        </tr>
+        @foreach (var campos in Model)
+        {
+            <tr>
+                <td>@campos.Id</td>
+                <td>@campos.Nombre</td>
+                <td>@campos.Apellido</td>
+                <td>@campos.Telefono</td>
+                <td>@campos.Edad</td>
+                <td>@campos.Activo</td>
+
+                <td>
+                    <a href="~/Persona/Editarpersona/@campos.Id" class="btn btn-warning">Editar</a>
+                    <a href="~/Persona/Eliminarpersona/@campos.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
